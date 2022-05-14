@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content= "ie=edge">
+    <title>Jamb Quiz</title>
+    <link rel = "stylesheet" href = "css/style.css">
+    
+</head>
+<body>
+    <div class = "app" >
+        <div class = "quiz">
+            <h1>Quiz</h1>
+        </div>
+        <hr style = "margin-bottom:20px">
+        <p class= "question">coming through</p>
+    
+        
+           
+    <button class= "btn" id = "btn0"><span id = "choices0">button1</span></button>
+    <button class= "btn" id = "btn1"><span id = "choices1">button2</span></button>
+    
+    
+     
+           
+        <button class= "btn" id = "btn0"><span id = "choices0">button1</span></button>
+        <button class= "btn" id = "btn1"><span id = "choices1">button2</span></button>
+         
+    
+     
+        <hr style ="margin-top:50px">
+    
+        <footer></footer>
+    </div>
+    
+
+
+
+
+    <p>welcome to the home page!!</p>
+
+    <script>  console.log("welcome")
+
+    function Question(text, choice , answer){this.text = text;
+    this.choice = choice; 
+    this.answer = answer; 
+this.question = question;
+this.questionIndex = 0}
+
+Question.prototype.rightAnswer = function(Canswer){return Canswer == this.answer}
+Question.prototype.gameEnded = function(){return this.questionIndex  == this.question.length }
+
+
+    var question = [ new Question("what is your name", ["solomon", "ruth", "timothy"], "timothy"),
+      new Question("what is your name", ["solomon", "ruth", "timothy"], "timothy")]
+    </script>
+</body>
+</html>
+

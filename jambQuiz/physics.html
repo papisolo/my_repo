@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content= "ie=edge">
+    <title>Jamb Quiz</title>
+    <style>.quiz{padding:1rem;
+    background-color:#778897;
+    border:2px solid #fff;
+    border-radius:50px;
+    color:#fff;
+    text-align:center;}
+
+   .grid {
+height:500px;
+background-color:#fff;
+padding:10px 50px 50px 50px ;
+border-radius:50px;
+border: 2px solid #cbcbcb;
+box-shadow:10px 15px 5px #cbcbcb;
+text-align:center;}
+
+.buttons{margin-top:50px}
+
+#btn0, #btn1, #btn2, #btn3{background-color:#778897;
+width:250px;
+font-size:10px;
+color:#fff;
+border:1px solid #1d3c6a;
+border-radius:50px;
+margin:5px 10px 0px;
+padding:10px 10px;}
+
+
+
+    .div-item{
+    padding:10px;
+    border: 2px solid #cbcbcb;
+    border-radius:50px;
+    background-color:#fff;
+    text-align:center;
+    margin:10px;}
+    
+.question{text-align: center;
+margin-bottom:50px}
+
+#btn0:hover, #btn1:hover, #btn2:hover, #btn3:hover{cursor:pointer;
+background-color: #57636e;}
+
+#btn0:focus, #btn1:focus, #btn2:focus, #btn3:focus{outline:0;
+background-color: lawngreen;}
+
+.div-item:hover{cursor:pointer;
+background-color: #57636e;}
+
+.div-item:focus{cursor:pointer;
+background-color: #57636e;}
+ </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
+
+
+<div class = "app" class="container justify-content-center">
+    
+    <div class = "grid">
+       <div class = "quiz">
+          <h1 class = "highlight">Quiz</h1>
+       </div>
+    <hr style = "margin-bottom:20px">
+    <p id = "question">where is the current city of the lebanese located and why is it located in that very city . What is the distance of the city to the capitalWhat is the distance of the city to the capital </p>
+
+    
+    
+      
+<div class="buttons">
+    <button  id = "btn0"><span id = "choices0"></span></button>
+     <button  id = "btn1"><span id = "choices1"> </span></button>
+     <button id = "btn2"><span id = "choices2"></span></button>
+     <button id = "btn3"><span id = "choices3"></span></button>
+</div>
+<p id = "progress">Question x of y</p>
+</div>
+    
+<hr style ="margin-top:50px">
+    
+
+ 
+    
+
+    
+
+
+    <div class="container">
+        <div class="row pt-2">
+            <a href="commerce.html" > <div class= "div-item" class="col-xs-4 md-1 px-3"><span >commerce</span></div></a>
+            <a href="english.html" ><div  class= "div-item" class="col-xs-4 md-1 px-3">English</div></a>
+            <a href="Mathematics.html" ><div  class= "div-item" class="col-xs-4 md-1 px-3">Mathematics</div></a>
+            <a href="physics.html" ><div class= "div-item" class="col-xs-4 md-1 px-3">Physics</div></a>
+            <a href="Chemistry.html" ><div class= "div-item" class="col-xs-4 md-1 px-3">Chemistry</div></a>
+            <a href="Economics.html" ><div class= "div-item" class="col-xs-4 md-1 px-3">Economics</div></a>
+        </div>
+    </div>
+    <footer></footer>
+</div>
+
+
+
+
+
+
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>console.log("welcome back")
+    function Question(text, choice, answer) {this.text = text;
+this.choice = choice;
+this.answer = answer}
+
+Question.prototype.correctAnswer = function(answer){return answer === this.answer}
+
+function Quiz(question){ this.score = 0;
+this.question = questions;
+this.questionIndex = 0}
+
+Quiz.prototype.getQuestionIndex = function(){return this.question[this.questionIndex];}
+Quiz.prototype.isEnded = function () {return this.question.length === this.questionIndex;}
+Quiz.prototype.guess = function(answer, id) {
+     if(this.getQuestionIndex().correctAnswer(answer)){ 
+        this.score++;
+    let element = document.querySelector(".highlight");
+element.innerHTML= "correct";
+document.getElementById(id).style.backgroundColor =  "red"}
+else {let element = document.querySelector(".highlight");
+element.innerHTML= "Incorrect"}
+this.questionIndex++;
+
+}
+
+
+var questions = [new Question ("which one is not an object oriented programming language ?", ["java", "c", "c++", 'c#'], "C"),
+new Question ("which language is used for styling the webpage ?", ["html", "jquery", "css", "xml"], "css" ), 
+new Question ("there are _______ main components of object oriented programming.",[1, 6, 2, 4], 4 ),
+new Question("NaOH is titrated to its end point with 39.45cm³ of HCI, what is the molarity of HCI?", ["0.094M", "0.150M", "0.940M" , "1.500M"],"0.150M")]
+
+
+var quiz = new Quiz(questions)   
+
+var populate = function (){ console.log(quiz.getQuestionIndex())
+    if (quiz.isEnded()) {
+showScores()
+
+}  else { //showScores//
+    var element = document.getElementById("question");
+element.innerHTML= quiz.getQuestionIndex().text;
+
+var choices = quiz.getQuestionIndex().choice;
+for(var i= 0; i < choices.length ;i++ ){
+    var element= document.getElementById("choices" + i);
+element.innerHTML= choices[i];
+guess("btn" + i, choices[i])
+
+
+
+
+}showProgress()};}
+
+populate()
+
+function guess(id, guess) {
+    var button = document.getElementById(id);
+    button.onclick= function(){quiz.guess(guess, id);
+    populate();}}
+
+   
+
+    function showProgress(){ let display = quiz.questionIndex ;
+    let collect = questions.length
+    if(display<collect){display++}
+    let show = "Question " + display + " of " + collect
+let element= document.getElementById("progress");
+element.innerHTML= show}
+
+
+    </script>
+</body>
+</html>
